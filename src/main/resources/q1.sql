@@ -20,13 +20,13 @@ CREATE TABLE user_log (
     ts TIMESTAMP
 ) WITH (
     'connector.type' = 'kafka',
-    'connector.version' = 'universal',
+    'connector.version' = '2.11',
     'connector.topic' = 'user_behavior',
     'connector.startup-mode' = 'earliest-offset',
     'connector.properties.0.key' = 'zookeeper.connect',
-    'connector.properties.0.value' = 'localhost:2181',
+    'connector.properties.0.value' = 'test.dc.data.woa.com:2181',
     'connector.properties.1.key' = 'bootstrap.servers',
-    'connector.properties.1.value' = 'localhost:9092',
+    'connector.properties.1.value' = 'test.dc.data.woa.com:9092',
     'update-mode' = 'append',
     'format.type' = 'json',
     'format.derive-schema' = 'true'
@@ -39,7 +39,7 @@ CREATE TABLE pvuv_sink (
     uv BIGINT
 ) WITH (
     'connector.type' = 'jdbc',
-    'connector.url' = 'jdbc:mysql://localhost:3306/flink-test',
+    'connector.url' = 'jdbc:mysql://test.dc.data.woa.com:3306/flink-test',
     'connector.table' = 'pvuv_sink',
     'connector.username' = 'root',
     'connector.password' = '123456',
